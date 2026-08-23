@@ -1,122 +1,163 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {
+  createContext,
+  useContext,
+  useState,
+} from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import PostJob from "./pages/PostJob";
+
+import "./App.css";
+
+/*
+  ============================================================
+  JOB CONTEXT
+  ============================================================
+
+  This context stores jobs that are created by the employer.
+
+  If your team already has a JobContext / JobsContext,
+  DO NOT create another one.
+
+  Instead, use your team's existing context in PostJob.jsx.
+*/
+
+const JobContext = createContext(null);
+
+export const useJobs = () => {
+  const context = useContext(JobContext);
+
+  if (!context) {
+    throw new Error(
+      "useJobs must be used inside JobProvider"
+    );
+  }
+
+  return context;
+};
+
+function JobProvider({ children }) {
+  /*
+    Keep the initial jobs empty here if your team's existing
+    job data is already provided by another context.
+
+    If your project already has initial jobs, use those jobs
+    instead of creating another job array.
+  */
+
+  const [jobs, setJobs] = useState([]);
+
+  const addJob = (newJob) => {
+    setJobs((previousJobs) => [
+      ...previousJobs,
+      newJob,
+    ]);
+  };
+
+  const updateJob = (jobId, updatedJob) => {
+    setJobs((previousJobs) =>
+      previousJobs.map((job) =>
+        String(job.id) === String(jobId)
+          ? {
+              ...job,
+              ...updatedJob,
+            }
+          : job
+      )
+    );
+  };
+
+  const deleteJob = (jobId) => {
+    setJobs((previousJobs) =>
+      previousJobs.filter(
+        (job) => String(job.id) !== String(jobId)
+      )
+    );
+  };
+
+  const value = {
+    jobs,
+    addJob,
+    updateJob,
+    deleteJob,
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <JobContext.Provider value={value}>
+      {children}
+    </JobContext.Provider>
+  );
 }
 
-export default App
+/*
+  ============================================================
+  PAGE IMPORTS
+  ============================================================
+
+  These are examples of the existing team pages.
+
+  Keep your team's existing imports if their filenames differ.
+*/
+
+import Home from "./pages/Home";
+import Jobs from "./pages/Jobs";
+import JobDetails from "./pages/JobDetails";
+import Apply from "./pages/Apply";
+import Applications from "./pages/Applications";
+import Saved from "./pages/Saved";
+
+function App() {
+  return (
+    <JobProvider>
+      <BrowserRouter>
+        <Navbar />
+
+        <Routes>
+          {/* Existing Home route */}
+          <Route path="/" element={<Home />} />
+
+          {/* Existing Jobs route */}
+          <Route path="/jobs" element={<Jobs />} />
+
+          {/* Existing Job Details route */}
+          <Route
+            path="/jobs/:id"
+            element={<JobDetails />}
+          />
+
+          {/* Existing Application route */}
+          <Route
+            path="/apply/:id"
+            element={<Apply />}
+          />
+
+          {/* Existing Applications route */}
+          <Route
+            path="/applications"
+            element={<Applications />}
+          />
+
+          {/* Existing Saved Jobs route */}
+          <Route
+            path="/saved"
+            element={<Saved />}
+          />
+
+          {/* Your Post Job route */}
+          <Route
+            path="/post-job"
+            element={<PostJob />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </JobProvider>
+  );
+}
+
+export default App;
