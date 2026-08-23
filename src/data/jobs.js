@@ -1,4 +1,3 @@
-jsx
 export const jobs = [
   {
     id: 1,
@@ -10,14 +9,8 @@ export const jobs = [
     salary: "NPR 40,000 - 60,000",
     category: "Technology",
     description:
-      "We are looking for a frontend developer to build modern and responsive web applications.",
-    requirements: [
-      "React",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Git"
-    ]
+      "Build and maintain modern web applications using React and JavaScript.",
+    requirements: ["React", "JavaScript", "HTML", "CSS"],
   },
   {
     id: 2,
@@ -29,122 +22,111 @@ export const jobs = [
     salary: "NPR 60,000 - 90,000",
     category: "Technology",
     description:
-      "Join our backend team and develop scalable APIs and server-side applications.",
-    requirements: [
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "REST API",
-      "Git"
-    ]
+      "Develop secure and scalable backend services and APIs.",
+    requirements: ["Node.js", "Express", "MongoDB", "REST API"],
   },
   {
     id: 3,
     title: "UI/UX Designer",
-    company: "Creative Labs",
+    company: "Pixel Studio",
     location: "Kathmandu",
-    jobType: "Full Time",
+    jobType: "Part Time",
     experience: "Entry Level",
-    salary: "NPR 35,000 - 55,000",
+    salary: "NPR 25,000 - 40,000",
     category: "Design",
     description:
-      "Design clean, modern and user-friendly interfaces for web and mobile applications.",
-    requirements: [
-      "Figma",
-      "UI Design",
-      "UX Design",
-      "Wireframing"
-    ]
+      "Create beautiful and user-friendly interfaces for web and mobile applications.",
+    requirements: ["Figma", "UI Design", "UX Research", "Prototyping"],
   },
   {
     id: 4,
     title: "Digital Marketing Specialist",
-    company: "Growth Nepal",
-    location: "Bhaktapur",
+    company: "Himalayan Media",
+    location: "Pokhara",
     jobType: "Full Time",
     experience: "Mid Level",
-    salary: "NPR 40,000 - 65,000",
+    salary: "NPR 45,000 - 65,000",
     category: "Marketing",
     description:
-      "Plan and execute digital marketing campaigns across multiple online platforms.",
-    requirements: [
-      "SEO",
-      "Social Media",
-      "Google Ads",
-      "Content Marketing"
-    ]
+      "Plan and execute digital marketing campaigns across multiple platforms.",
+    requirements: ["SEO", "Social Media", "Google Ads", "Analytics"],
   },
   {
     id: 5,
-    title: "Data Analyst",
-    company: "Insight Solutions",
-    location: "Kathmandu",
+    title: "Junior Software Engineer",
+    company: "Everest Technologies",
+    location: "Bhaktapur",
     jobType: "Full Time",
-    experience: "Mid Level",
-    salary: "NPR 50,000 - 80,000",
-    category: "Data",
+    experience: "Entry Level",
+    salary: "NPR 35,000 - 50,000",
+    category: "Technology",
     description:
-      "Analyze business data and create meaningful reports to support decision making.",
-    requirements: [
-      "Excel",
-      "SQL",
-      "Python",
-      "Data Visualization"
-    ]
+      "Work with the development team to build and maintain software applications.",
+    requirements: ["JavaScript", "Git", "React", "Problem Solving"],
   },
   {
     id: 6,
-    title: "React Intern",
-    company: "WebWorks Nepal",
-    location: "Remote",
-    jobType: "Internship",
-    experience: "Entry Level",
-    salary: "NPR 15,000 - 25,000",
-    category: "Technology",
+    title: "HR Manager",
+    company: "Nepal Business Group",
+    location: "Kathmandu",
+    jobType: "Full Time",
+    experience: "Senior Level",
+    salary: "NPR 70,000 - 100,000",
+    category: "Human Resources",
     description:
-      "Learn and work with React while contributing to real-world web development projects.",
-    requirements: [
-      "React",
-      "JavaScript",
-      "HTML",
-      "CSS"
-    ]
+      "Manage recruitment, employee relations, and organizational development.",
+    requirements: ["Recruitment", "Leadership", "Communication", "HR Management"],
   },
   {
     id: 7,
     title: "Content Writer",
-    company: "Media House Nepal",
+    company: "Creative Nepal",
     location: "Pokhara",
-    jobType: "Part Time",
+    jobType: "Remote",
     experience: "Entry Level",
-    salary: "NPR 20,000 - 35,000",
+    salary: "NPR 25,000 - 45,000",
     category: "Content",
     description:
-      "Create engaging articles, website content and social media posts for our audience.",
-    requirements: [
-      "Writing",
-      "Research",
-      "SEO",
-      "Communication"
-    ]
+      "Create engaging written content for websites, blogs, and social media.",
+    requirements: ["Writing", "SEO", "Research", "English"],
   },
   {
     id: 8,
+    title: "Data Analyst",
+    company: "Insight Nepal",
+    location: "Kathmandu",
+    jobType: "Full Time",
+    experience: "Mid Level",
+    salary: "NPR 55,000 - 80,000",
+    category: "Data",
+    description:
+      "Analyze business data and create reports to support decision making.",
+    requirements: ["Excel", "SQL", "Python", "Data Visualization"],
+  },
+  {
+    id: 9,
+    title: "Graphic Designer",
+    company: "DesignHub Nepal",
+    location: "Lalitpur",
+    jobType: "Part Time",
+    experience: "Mid Level",
+    salary: "NPR 30,000 - 50,000",
+    category: "Design",
+    description:
+      "Design graphics and visual content for digital marketing campaigns.",
+    requirements: ["Photoshop", "Illustrator", "Figma", "Creativity"],
+  },
+  {
+    id: 10,
     title: "Project Manager",
-    company: "Himalayan Technologies",
+    company: "Summit Solutions",
     location: "Kathmandu",
     jobType: "Full Time",
     experience: "Senior Level",
     salary: "NPR 80,000 - 120,000",
     category: "Management",
     description:
-      "Lead software projects, coordinate teams and ensure projects are delivered successfully.",
-    requirements: [
-      "Project Management",
-      "Leadership",
-      "Agile",
-      "Communication"
-    ]
-  }
+      "Lead technology projects and coordinate development teams.",
+    requirements: ["Project Management", "Leadership", "Agile", "Communication"],
+  },
 ];
-
